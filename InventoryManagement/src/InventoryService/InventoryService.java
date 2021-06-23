@@ -1,12 +1,21 @@
 package InventoryService;
 
 import DAO.InventoryDAO;
-import org.json.JSONArray;
-import java.util.Scanner;
+
+import org.json.simple.JSONArray;
 
 public class InventoryService implements InventoryServiceInterface {
     InventoryDAO inventoryDAO = new InventoryDAO();
-    Scanner input = new Scanner(System.in);
+
+    @Override
+    public void writeFile(JSONArray array) {
+        inventoryDAO.writeFile(array);
+    }
+
+    @Override
+    public JSONArray readFile() {
+        return inventoryDAO.readFile();
+    }
 
     @Override
     public JSONArray addItems(JSONArray array) {
@@ -42,5 +51,6 @@ public class InventoryService implements InventoryServiceInterface {
     public void totalPriceOfInventory(JSONArray array) {
         inventoryDAO.totalPriceOfInventory(array);
     }
+
 }
 
